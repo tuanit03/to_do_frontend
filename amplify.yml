@@ -5,10 +5,10 @@ frontend:
         - npm install
     build:
       commands:
-        - echo "USER_POOL_ID=$USER_POOL_ID" >> .env
-        - echo "USER_POOL_CLIENT_ID=$USER_POOL_CLIENT_ID" >> .env
-        - echo "REGION=$REGION'" >> .env
-        - echo "API_URL=$API_URL" >> .env
+        - echo "USER_POOL_ID=$USER_POOL_ID" >> src/config.js
+        - echo "USER_POOL_CLIENT_ID=$USER_POOL_CLIENT_ID" >> src/config.js
+        - echo "REGION=$REGION'" >> src/config.js
+        - echo "API_URL=$API_URL" >> src/config.js
         - npm run build
   artifacts:
     baseDirectory: /
