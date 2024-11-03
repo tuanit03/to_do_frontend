@@ -1,10 +1,10 @@
 window._config = {
     cognito: {
-        userPoolId: process.env.USER_POOL_ID,
-        userPoolClientId: process.env.USER_POOL_CLIENT_ID,
-        region: process.env.REGION
+        userPoolId: USER_POOL_ID,
+        userPoolClientId: USER_POOL_CLIENT_ID,
+        region: REGION
     },
     api: {
-        url: process.env.API_URL
+        url: API_URL
     }
 };
