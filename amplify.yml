@@ -5,7 +5,7 @@ frontend:
         - npm install
     build:
       commands:
-        - echo "window._config = {" > src/config.js
+        - echo "window._config = {" >> src/config.js
         - echo "  cognito: {" >> src/config.js
         - echo "    userPoolId: '\$USER_POOL_ID'," >> src/config.js
         - echo "    userPoolClientId: '\$USER_POOL_CLIENT_ID'," >> src/config.js
