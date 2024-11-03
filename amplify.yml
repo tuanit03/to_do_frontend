@@ -5,13 +5,8 @@ frontend:
         - npm install
     build:
       commands:
-        - echo "window._config = {" > src/config.js
-        - echo "  cognito: {" >> src/config.js
-        - echo "    userPoolId: '\$USER_POOL_ID'," >> src/config.js
-        - echo "    userPoolClientId: '\$USER_POOL_CLIENT_ID'," >> src/config.js
-        - echo "    region: '\$REGION'" >> src/config.js
-        - echo "  }," >> src/config.js
-        - echo "  api: {" >> src/config.js
-        - echo "    url: '\$API_URL'" >> src/config.js
-        - echo "  }" >> src/config.js
-        - echo "};" >> src/config.js
+        - echo "USER_POOL_ID=$USER_POOL_ID" >> .env
+        - echo "USER_POOL_CLIENT_ID=$USER_POOL_CLIENT_ID" >> .env
+        - echo "REGION=$REGION'" >> .env
+        - echo "API_URL=$API_URL" >> .env
+        - npm run build
