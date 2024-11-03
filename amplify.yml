@@ -1,14 +1,17 @@
-version: 1
 frontend:
   phases:
     preBuild:
-      commands: []
+      commands:
+        - npm install
     build:
       commands:
-        - echo "window._config = { cognito: { userPoolId: '$USER_POOL_ID', userPoolClientId: '$USER_POOL_CLIENT_ID', region: '$REGION' }, api: { url: '$API_URL' } };" > src/config.js
-  artifacts:
-    baseDirectory: /
-    files:
-      - '**/*'
-  cache:
-    paths: []
+        - echo "window._config = {" > src/config.js
+        - echo "  cognito: {" >> src/config.js
+        - echo "    userPoolId: '\$USER_POOL_ID'," >> src/config.js
+        - echo "    userPoolClientId: '\$USER_POOL_CLIENT_ID'," >> src/config.js
+        - echo "    region: '\$REGION'" >> src/config.js
+        - echo "  }," >> src/config.js
+        - echo "  api: {" >> src/config.js
+        - echo "    url: '\$API_URL'" >> src/config.js
+        - echo "  }" >> src/config.js
+        - echo "};" >> src/config.js
