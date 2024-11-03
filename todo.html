@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos App</title>
+    <link rel="stylesheet" href="css/todo.css">
+</head>
+<body>
+    <div class="todo-container">
+        <header>
+            <h1>Danh sách Công việc</h1>
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+        </header>
+        <section>
+            <form id="todoForm" class="todo-form">
+                <input type="text" id="taskIdInput" placeholder="Task ID" required>
+                <input type="text" id="descriptionInput" placeholder="Mô tả Task" required>
+                <input type="date" id="dueDateInput" required>
+                <button id="addTaskButton">Add Task</button>
+                <p id="message"></p>
+            </form>
+            <ul id="task-list"></ul>
+            
+        </section>
+    </div>
+    <script src="js/vendor/jquery-3.1.0.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/aws-cognito-sdk.min.js"></script>
+    <script src="js/vendor/amazon-cognito-identity.min.js"></script>
+    <script src="https://js.arcgis.com/4.6/"></script>
+    <script src="js/config.js"></script>
+    <script src="js/cognito-auth.js"></script>
+    <script src="js/esri-map.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/ride.js"></script>
+    
+</body>
+</html>
