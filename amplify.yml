@@ -7,11 +7,11 @@ frontend:
       commands:
         - echo "window._config = {" > js/config.js
         - echo "  cognito: {" >> js/config.js
-        - echo "    userPoolId: '$USER_POOL_ID'," >> js/config.js
-        - echo "    userPoolClientId: '$USER_POOL_CLIENT_ID'," >> js/config.js
-        - echo "    region: '$REGION'" >> js/config.js
+        - echo "    userPoolId: '\$USER_POOL_ID'," >> js/config.js
+        - echo "    userPoolClientId: '\$USER_POOL_CLIENT_ID'," >> js/config.js
+        - echo "    region: '\$REGION'" >> js/config.js
         - echo "  }," >> js/config.js
         - echo "  api: {" >> js/config.js
-        - echo "    url: '$API_URL'" >> js/config.js
+        - echo "    url: '\$API_URL'" >> js/config.js
         - echo "  }" >> js/config.js
         - echo "};" >> js/config.js
