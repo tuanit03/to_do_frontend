@@ -1,4 +1,5 @@
 {
+  "name": "to_do_app",
   "devDependencies": {
     "@aws-amplify/backend": "^1.6.0",
     "@aws-amplify/backend-cli": "^1.4.0",
@@ -11,5 +12,8 @@
   },
   "dependencies": {
     "aws-amplify": "^6.8.0"
+  },
+  "scripts": {
+    "build": "mkdir -p dist && cp -r * dist/"
   }
 }
