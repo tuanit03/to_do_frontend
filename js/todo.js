@@ -164,7 +164,7 @@ document.getElementById('addTaskButton').addEventListener('click', (event) => {
 
 
 document.getElementById('logoutBtn').addEventListener('click' , () => {
-    window.location.href = 'signin.html';
+    window.location.href = 'index.html';
 })
 
 
