@@ -14,6 +14,6 @@
     "aws-amplify": "^6.8.0"
   },
   "scripts": {
-    "build": "mkdir -p dist && cp -r * dist/"
+    "build": "mkdir -p dist && cp -r *.html *.css *.js dist/"
   }
 }
