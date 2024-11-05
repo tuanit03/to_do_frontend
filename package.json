@@ -14,6 +14,6 @@
     "aws-amplify": "^6.8.0"
   },
   "scripts": {
-    "build": "esbuild src/index.js --bundle --outdir=dist --minify" // Adjust based on your entry file and setup
+    "build": "esbuild src/index.js --bundle --outdir=dist --minify"
   }
 }
