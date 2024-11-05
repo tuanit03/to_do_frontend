@@ -11,6 +11,31 @@
     }
   };
 </script>
+<html>
+<head>
+    <title>Configuration Values</title>
+</head>
+<body>
+    <h1>Configuration Values</h1>
+    <script>
+        window._config = {
+            cognito: {
+                userPoolId: '${USER_POOL_ID}',
+                userPoolClientId: '${USER_POOL_CLIENT_ID}',
+                region: '${REGION}'
+            },
+            api: {
+                url: '${API_URL}'
+            }
+        };
+
+        document.write('<p><strong>User Pool ID:</strong> ' + window._config.cognito.userPoolId + '</p>');
+        document.write('<p><strong>User Pool Client ID:</strong> ' + window._config.cognito.userPoolClientId + '</p>');
+        document.write('<p><strong>Region:</strong> ' + window._config.cognito.region + '</p>');
+        document.write('<p><strong>API URL:</strong> ' + window._config.api.url + '</p>');
+    </script>
+</body>
+</html>
 
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
