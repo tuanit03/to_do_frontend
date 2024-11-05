@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+<script>
+  window._config = {
+    cognito: {
+      userPoolId: '${USER_POOL_ID}',
+      userPoolClientId: '${USER_POOL_CLIENT_ID}',
+      region: '${REGION}'
+    },
+    api: {
+      url: '${API_URL}'
+    }
+  };
+</script>
 
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
