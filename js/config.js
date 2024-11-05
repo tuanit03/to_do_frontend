@@ -1,10 +1,18 @@
-window._config = {
-  cognito: {
-    userPoolId: window._env_.REACT_APP_USER_POOL_ID || "default",
-    userPoolClientId: window._env_.REACT_APP_USER_POOL_CLIENT_ID || "default",
-    region: window._env_.REACT_APP_REGION || "default"
-  },
-  api: {
-    url: window._env_.REACT_APP_API_URL || "default"
-  }
-};
+function loadConfig() {
+  window._config = {
+    cognito: {
+      userPoolId: window._env_.REACT_APP_USER_POOL_ID || "default",
+      userPoolClientId: window._env_.REACT_APP_USER_POOL_CLIENT_ID || "default",
+      region: window._env_.REACT_APP_REGION || "default"
+    },
+    api: {
+      url: window._env_.REACT_APP_API_URL || "default"
+    }
+  };
+}
+
+if (window._env_) {
+  loadConfig();
+} else {
+  window.addEventListener("load", loadConfig);
+}
