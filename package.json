@@ -14,6 +14,6 @@
     "aws-amplify": "^6.8.0"
   },
   "scripts": {
-    "build": "rm -rf dist && mkdir dist && cp -r !(dist) dist/"
+    "build": "rm -rf dist && mkdir dist && find . -maxdepth 1 ! -name dist -exec cp -r {} dist/ \\;"
   }
 }
