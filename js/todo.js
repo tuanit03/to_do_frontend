@@ -6,9 +6,10 @@ function loadConfig() {
     
     const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
     const cognitoUser = userPool.getCurrentUser();
+
     
     let email = cognitoUser.getUsername(); 
-    email = email.replace("-at-", "@");
+    email = email.replace("-at-", "@").toLowerCase();
     
     async function addTask() {
         if (!cognitoUser) {
@@ -25,30 +26,28 @@ function loadConfig() {
             const taskId = parseInt(document.getElementById("taskIdInput").value, 10);
             const description = document.getElementById('descriptionInput').value;
             const dueDateInputValue = document.getElementById('dueDateInput').value; 
-    
-    
+            const timeInput = document.getElementById('endTimeInput').value;
     
             if (!taskId || !description || !dueDateInputValue) {
                 alert("Vui lòng nhập đầy đủ thông tin.");
                 return;
             }
     
-            const dueDateInput = new Date(dueDateInputValue);
+            function formatDate(dateString) {
+                const dateParts = dateString.split("-");
+                return `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`; 
+            }
     
-            if (isNaN(dueDateInput.getTime())) {
-                alert("Ngày không hợp lệ.");
-                return;
-            } 
+            const Date = formatDate(dueDateInputValue)
     
-            // Chuyển đổi thành định dạng ISO 8601
-            const dueDate = dueDateInput.toISOString(); 
+            const dueDateTime = `${timeInput} ${Date}`
     
             const addUrl = `${window._config.api.url}/add`;
     
             const databody1 = {
                 email: email,
                 task_id: taskId,
-                DueDate: dueDateInputValue,
+                DueDate: dueDateTime,
                 Description: description
             };
     
@@ -61,7 +60,6 @@ function loadConfig() {
                 body: JSON.stringify(databody1)
             })
             .then(response => {
-                console.log(response)
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
                 }
@@ -104,23 +102,6 @@ function loadConfig() {
         });
     }
     
-    // Hàm hiển thị danh sách task
-    function displayTasks(tasks) {
-        const taskList = document.getElementById("task-list");
-        taskList.innerHTML = ''; 
-    
-        tasks.forEach(task => {
-            const li = document.createElement("li");
-            li.innerHTML = `
-                <span class="task-id">Task ID: ${task.TaskId}</span><br>
-                <span class="description">Description: ${task.Description}</span><br>
-                <span class="due-date">Due Date: ${task.DueDate}</span>
-                <button class="delete-task" onclick="deleteTask(${task.TaskId})">Delete task</button>
-            `;
-            taskList.appendChild(li);
-        });
-    }
-    
     function deleteTask(taskId) {
         const confirmDelete = confirm("Bạn có chắc chắn muốn xóa công việc này không?");
         
@@ -156,6 +137,26 @@ function loadConfig() {
              console.error("Error:", error);
         });
     }
+    
+    function displayTasks(tasks) {
+        const taskList = document.getElementById("task-list");
+        taskList.innerHTML = ''; 
+    
+        tasks.forEach(task => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+                <span class="task-id">Task ID: ${task.TaskId}</span><br>
+                <span class="description">Description: ${task.Description}</span><br>
+                <span class="due-date">Due Date: ${task.DueDate}</span>
+                <button class="delete-task" onclick="deleteTask(${task.TaskId})">Delete task</button>
+            `;
+            taskList.appendChild(li);
+        });
+    }
+
+    window.deleteTask = deleteTask;
+    window.addTask = addTask;
+    window.displayTasks = displayTasks;
     
     
     document.getElementById('addTaskButton').addEventListener('click', (event) => {

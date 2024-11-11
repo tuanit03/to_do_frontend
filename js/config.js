@@ -16,3 +16,4 @@ if (window._env_) {
 } else {
   window.addEventListener("load", loadConfig);
 }
+

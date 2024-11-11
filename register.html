@@ -64,7 +64,7 @@
             <input type="email" id="emailInputRegister" placeholder="Email" required>
             <input type="password" id="passwordInputRegister" placeholder="Password" required>
             <input type="password" id="password2InputRegister" placeholder="Confirm Password" required>
-            <input type="submit" value="Let's Ryde" onclick="register()">
+            <input type="submit" value="Let's Ryde">
             <button  type="button" id="signinButton">Sign in </button> 
             <p id="registerMessage"></p>
         </form>
@@ -81,38 +81,6 @@
         document.getElementById('signinButton').addEventListener('click', function() {
                 window.location.href = 'index.html';
             });
-
-        function register() {
-
-            const registerUrl = `${window._config.api.url}`;
-            console.log(registerUrl)
-            const email = document.getElementById('emailInputRegister').value
-            console.log(email)
-
-            const requestBody = {
-                email: email,
-            };
-
-            fetch(registerUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestBody)
-            })
-            .then(response => {
-                if (!response.ok) {
-                throw new Error("Không thể xóa công việc.");
-            }
-            return response.json();
-            })
-            .then(data => {
-                console.log(data.body);
-            })
-            .catch(error => {
-                 console.error("Error:", error);
-            });
-        }
     </script>
 </body>
 </html>
